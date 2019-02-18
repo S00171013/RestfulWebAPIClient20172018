@@ -9,7 +9,6 @@ namespace WebAPIAuthenticationClient
     public class ExternalGameObject
     {
         string name;
-        string cover;
         string summary;
         public string Name
         {
@@ -21,19 +20,6 @@ namespace WebAPIAuthenticationClient
             set
             {
                 name = value;
-            }
-        }
-
-        public string Cover
-        {
-            get
-            {
-                return cover;
-            }
-
-            set
-            {
-                cover = value;
             }
         }
 

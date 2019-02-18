@@ -25,7 +25,8 @@ namespace WpfClient
         //public MainViewModel mvm { get; set; }
         public MainWindow()
         {
-            PlayerAuthentication.baseWebAddress = "http://ppapigameserver.azurewebsites.net/";
+            PlayerAuthentication.baseWebAddress = "http://localhost:50574/";
+            //"http://ppapigameserver.azurewebsites.net/";
             InitializeComponent();
             //mvm = new MainViewModel();
             //this.DataContext = mvm;

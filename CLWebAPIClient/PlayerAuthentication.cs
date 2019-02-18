@@ -21,7 +21,7 @@ namespace WebAPIAuthenticationClient
         static public string baseWebAddress;
         static public string PlayerToken = "";
         static public AUTHSTATUS PlayerStatus = AUTHSTATUS.NONE;
-        static public string IgdbUserToken = "PUT YOUR EXTERNAL WEB API TOKEN HERE";
+        static public string IgdbUserToken = ""; // You'll need to ignup for your own Token Here
         static public List<GameScoreObject> getScores(int count, string Game )
             {
             using (var client = new HttpClient())
@@ -37,12 +37,13 @@ namespace WebAPIAuthenticationClient
 
         static public dynamic getExtGame(int gameID)
         {
+            // Latest API Endpoint IGDB documentation https://api-docs.igdb.com/#endpoints
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 client.DefaultRequestHeaders.Add("user-key", IgdbUserToken);
-                var response = client.GetAsync("https://api-endpoint.igdb.com/games/" + gameID.ToString()).Result;
+                var response = client.GetAsync("https://api-v3.igdb.com/games/" + gameID.ToString() + "?fields=name,summary").Result;
                 var resultContent = response.Content.ReadAsAsync<JToken>(
                     new[] { new JsonMediaTypeFormatter() }).Result;
 
@@ -50,13 +51,11 @@ namespace WebAPIAuthenticationClient
                 var jname = resultContent.Children()["name"].Values<string>().FirstOrDefault();
                 var jsummary = resultContent.Children()["summary"].Values<string>().FirstOrDefault();
                 // url is nested in cover object
-                var jcover = resultContent.Children()["cover"]["url"].Values<string>().FirstOrDefault();
                 ExternalGameObject eobj = 
                                         new ExternalGameObject
                                         {
                                             Name = jname,
                                             Summary = jsummary,
-                                            Cover = jcover
                                         };
 
 

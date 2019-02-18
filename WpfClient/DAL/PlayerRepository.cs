@@ -60,7 +60,7 @@ namespace WpfClient.DAL
 
         public bool login(string username, string password)
         {
-            if(PlayerAuthentication.login(baseAddress, username, password))
+            if(PlayerAuthentication.login(username, password))
             {
                 _token = PlayerAuthentication.PlayerToken;
                 currentPlayer = PlayerAuthentication.getPlayerProfile();
