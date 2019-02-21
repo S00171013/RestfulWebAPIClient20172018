@@ -21,7 +21,7 @@ namespace WebAPIAuthenticationClient
         static public string baseWebAddress;
         static public string PlayerToken = "";
         static public AUTHSTATUS PlayerStatus = AUTHSTATUS.NONE;
-        static public string IgdbUserToken = ""; // You'll need to ignup for your own Token Here
+        static public string IgdbUserToken = ""; // You'll need to signup for your own Token Here
         static public List<GameScoreObject> getScores(int count, string Game )
             {
             using (var client = new HttpClient())

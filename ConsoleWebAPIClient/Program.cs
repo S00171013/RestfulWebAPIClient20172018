@@ -16,7 +16,7 @@ namespace ConsoleWebAPIClient
         {
             PlayerProfile currentPlayer;
 
-            PlayerAuthentication.baseWebAddress = "http://ppapigameserver.azurewebsites.net/";// "http://localhost:50574/";
+            PlayerAuthentication.baseWebAddress = "https://monogameservers00171013.azurewebsites.net/"; // "http://localhost:50574/"; 
             bool logged = PlayerAuthentication.login("powell.paul@itsligo.ie", "itsPaul$1");
             if (logged)
             {
